@@ -1,4 +1,4 @@
-package com.weather.weathertest.enums;
+package com.weathertest.weather.enums;
 
 public enum LogStatus {
      
