@@ -76,7 +76,6 @@ public class WeatherService {
 	        log.setCity(location.get("name").toString());
 	        log.setStatus(LogStatus.success.getValue());
 	        log = logRepo.save(log);
-	        return result;
 	    } catch (HttpClientErrorException | HttpServerErrorException ex) {
 	        result.put("status", ex.getStatusCode().value());
 	        result.put("error", ex.getStatusText());
@@ -85,7 +84,6 @@ public class WeatherService {
 	        log.setStatus(LogStatus.fail.getValue());
 	        log.setError(ex.getResponseBodyAsString());
 	        log = logRepo.save(log);
-	        return result;
 	    } catch (RestClientException ex) {
 	        result.put("status", HttpStatus.SERVICE_UNAVAILABLE.value());
 	        result.put("error", "Service unavailable");
@@ -94,7 +92,7 @@ public class WeatherService {
 	        log.setStatus(LogStatus.fail.getValue());
 	        log.setError(ex.getMessage());
 	        log = logRepo.save(log);
-	        return result;
 	    }
+		return result;
 	}
 }
