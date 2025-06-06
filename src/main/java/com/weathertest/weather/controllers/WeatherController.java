@@ -13,18 +13,18 @@ import com.weathertest.weather.models.RequestLogs;
 import com.weathertest.weather.service.WeatherService;
 
 @RestController
+@CrossOrigin
 public class WeatherController {
     
 	@Autowired
 	private WeatherService weatherService;
 	
-	@CrossOrigin
+	
 	@GetMapping(value = "/api/weather/{city}")
 	public Map<String, Object> getCurrentWeather(@PathVariable String city) {
 		return weatherService.getWeather(city);
 	}
 	
-	@CrossOrigin
 	@GetMapping(value = "/api/historyrecords")
 	public List<RequestLogs> getHistory() {
 		return weatherService.getRecords();
